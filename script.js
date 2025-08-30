@@ -1,9 +1,20 @@
+
+// SET a function called getUserChoice
+// let randomNumber = (Math.floor(Math.random() * 3)+1);
+
+let computerScore = 0;  // SET a variable that keep track the computer score
+let userScore=0;    // SET a variable that will keep track the user score
+
+
+
+function playGame(){
+for (let i =0; i<=5; i++){
+
 // CALL getUserInput and SET the user input variable
 let userChoice = getUserChoice();
 // CALL getChoiceInput and SET the return value into a variable
 let computerchoice = getComputerChoice();
-// SET a function called getUserChoice
-// let randomNumber = (Math.floor(Math.random() * 3)+1);
+
 function getUserChoice(){
     
 // READ the user input
@@ -35,8 +46,7 @@ function getComputerChoice(){
 // SET a function that will recieve both the user choice and the computer choice
 function playRound(userChoice , computerChoice){
 
-    let computerScore = 0;  // SET a variable that keep track the computer score
-    let userScore=0;    // SET a variable that will keep track the user score
+   
 // FOR repetition reaches 5
 if( userChoice === computerChoice){ // IF userchoice === computerchoice
     userScore += 0;
@@ -54,11 +64,23 @@ if( userChoice === computerChoice){ // IF userchoice === computerchoice
 }
 // ENDFOR
 // COMPUTE the the score 
-console.log(computerScore)
-console.log(userScore)
+
 // PRINT the winner 
+console.log(computerScore, userScore)
 }
 
-playRound(userChoice,computerchoice)
-// // SET a variable that keep track the computer score
+playRound(userChoice,computerchoice);
+}
+
+if (computerScore>userScore){  //IF computer score greate than user score
+   
+    console.log("You Lose");// Print you lose
+}else { // ELSE 
+    console.log("You Win");
+}
+
+}
+
+playGame()
+   
 
