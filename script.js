@@ -1,27 +1,80 @@
-
 // SET a function called getUserChoice
 // let randomNumber = (Math.floor(Math.random() * 3)+1);
 
 let computerScore = 0;  // SET a variable that keep track the computer score
 let userScore=0;    // SET a variable that will keep track the user score
-
-
-
+let clickCount = 0
 function playGame(){
-for (let i =0; i<=5; i++){
+
+document.addEventListener("DOMContentLoaded",function (){
+    body = document.querySelector('body')
+    const winnerTeller = document.createElement('div')  
+    
+    // const container = document.querySelector('div')
+    const rockButton = document.createElement('button')
+    rockButton.textContent = 'Rock'
+    const paperButton = document.createElement('button')
+    paperButton.textContent = 'Paper'
+    const scissorButton = document.createElement('button')
+    scissorButton.textContent = 'Scissor'
+    // document.addEventListener('DOMContentLoaded', 90)
+    body.appendChild(rockButton)
+    body.appendChild(paperButton)
+    body.appendChild(scissorButton)
+    container = document.createElement('div')
+    body.appendChild(container)
+    body.appendChild(winnerTeller) 
+
+
+
+    document.addEventListener('click', function(e){
+        console.log(computerChoice,userChoice)
+        clickCount++
+        winnerTeller.textContent = ''
+        if (e.target === rockButton){
+            userChoice = 'rock'
+        }else if(e.target === paperButton){
+            userChoice = 'paper'
+        }else{
+            userChoice = 'scissor'
+        }
+        let computerchoice = getComputerChoice();
+        playRound(userChoice,computerchoice);
+        console.log(e.detail)
+        container.textContent = `user-score:${userScore} \n computer-score: ${computerScore}`
+
+        if (clickCount===5){
+
+        if (computerScore>userScore){  //IF computer score greate than user score
+        
+            winnerTeller.textContent = 'You Lose'
+        }else if(userScore>computerScore){ // ELSE 
+            winnerTeller.textContent = 'You Win'
+        }else{
+            winnerTeller.textContent ='Draw'
+        }
+            userScore = 0
+            computerScore=0
+            clickCount = 0
+        }
+    })
+
+})
+
+
 
 // CALL getUserInput and SET the user input variable
-let userChoice = getUserChoice();
+// let userChoice = getUserChoice();
 // CALL getChoiceInput and SET the return value into a variable
-let computerchoice = getComputerChoice();
 
-function getUserChoice(){
+
+// function getUserChoice(){
     
-// READ the user input
-userChoiceReturn = prompt("Choice between rock paper scissor");
-// RETURN the user input
-return userChoiceReturn.toLowerCase();
-}
+// // READ the user input
+// userChoiceReturn = prompt("Choice between rock paper scissor");
+// // RETURN the user input
+// return userChoiceReturn.toLowerCase();
+// }
 
 // SET a function called getComputerChoice
 function getComputerChoice(){
@@ -66,21 +119,15 @@ if( userChoice === computerChoice){ // IF userchoice === computerchoice
 // COMPUTE the the score 
 
 // PRINT the winner 
-console.log(computerScore, userScore)
+// console.log(computerScore, userScore)
 }
 
-playRound(userChoice,computerchoice);
-}
-
-if (computerScore>userScore){  //IF computer score greate than user score
-   
-    console.log("You Lose");// Print you lose
-}else { // ELSE 
-    console.log("You Win");
-}
 
 }
+
+
+
+// }
 
 playGame()
    
-
